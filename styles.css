@@ -2,3 +2,8 @@ input:invalid {
     border-color: #900;
     background-color: #fdd;
 }
+
+input:valid {
+    border-color: #090;
+    background-color: #dfd;
+}
