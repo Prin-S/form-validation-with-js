@@ -13,6 +13,20 @@ function submitForm(event) {
 
 form.addEventListener('submit', submitForm);
 
+const resetButton = document.querySelector('#reset');
+
+function resetFields() {
+    email.setCustomValidity("Email cannot be empty.");
+    country.setCustomValidity("Country cannot be empty.");
+    postcode.setCustomValidity("Postcode cannot be empty. Use - for no postcode.");
+    password.setCustomValidity("Password cannot be empty.");
+    confirmPassword.setCustomValidity("Password cannot be empty.");
+}
+
+resetButton.addEventListener('click', () => {
+    resetFields();
+});
+
 const email = document.querySelector('#email');
 const atSignRegex = /@/g;
 const TLDRegex = /.[a-zA-Z]{2,}$/;
