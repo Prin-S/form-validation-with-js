@@ -8,6 +8,13 @@ function submitForm(event) {
     country.reportValidity();
     email.reportValidity();
 
+    // Since this form does not actually submit, display a message if all fields are correctly filled.
+    if (email.reportValidity() && country.reportValidity() && postcode.reportValidity() && password.reportValidity() && confirmPassword.reportValidity()) {
+        message.classList.add('appear');
+    } else { // Remove the message if any field is incorrectly filled.
+        message.classList.remove('appear');
+    }
+
     event.preventDefault();
 }
 
@@ -21,11 +28,14 @@ function resetFields() {
     postcode.setCustomValidity("Postcode cannot be empty. Use - for no postcode.");
     password.setCustomValidity("Password cannot be empty.");
     confirmPassword.setCustomValidity("Password cannot be empty.");
+    message.classList.remove('appear'); // Remove the message when the Reset button is pressed.
 }
 
 resetButton.addEventListener('click', () => {
     resetFields();
 });
+
+const message = document.querySelector('#message');
 
 const email = document.querySelector('#email');
 const atSignRegex = /@/g;
